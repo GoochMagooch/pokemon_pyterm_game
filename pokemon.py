@@ -22,20 +22,20 @@ class Pokemon:
     self.health = 0
 
   def attack(self, enemy):
-      if (self.pokemon_type == "water" and enemy.pokemon_type == "fire") or (self.pokemon_type == "fire" and enemy.pokemon_type == "plant") or (self.pokemon_type == "electric" and enemy.pokemon_type == "water"):
-        enemy.health -= 25
-        if enemy.health <= 0:
-          enemy.knockout()
-          print(f"{enemy.name} has been knocked out!")
-        else:
-          print(f"{self.name} attacks {enemy.name} with {self.attack_name}")
-          print("It is super effective!")
-          print(f"{enemy.name}'s health is now: {enemy.health}")
+    if (self.pokemon_type == "water" and enemy.pokemon_type == "fire") or (self.pokemon_type == "fire" and enemy.pokemon_type == "plant") or (self.pokemon_type == "electric" and enemy.pokemon_type == "water"):
+      enemy.health -= 25
+      if enemy.health <= 0:
+        enemy.knockout()
+        print(f"{enemy.name} has been knocked out!")
       else:
-        enemy.health -= 10
         print(f"{self.name} attacks {enemy.name} with {self.attack_name}")
-        print("It is not very effective!")
+        print("It is super effective!")
         print(f"{enemy.name}'s health is now: {enemy.health}")
+    else:
+      enemy.health -= 10
+      print(f"{self.name} attacks {enemy.name} with {self.attack_name}")
+      print("It is not very effective!")
+      print(f"{enemy.name}'s health is now: {enemy.health}")
 
 class Trainer:
   def __init__(self, name):
@@ -94,9 +94,9 @@ while True:
   clear_screen()
   print(f"{trainer_two.name}'s pokemon stats:\n{pokemon_two}\n")
   input("Press enter to continue...")
-  
   clear_screen()
-  print("Congratulations, pokemon and trainer creation are now complete!")
+
+  print("Press enter to begin the battle...")
   break
 
 bulbasaur = Pokemon("Bulbasaur", "water gun", "water")
