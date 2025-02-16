@@ -93,7 +93,6 @@ while True:
   pokemon_two = Pokemon(pokemon2, attack2, type2)
   clear_screen()
   print(f"{trainer_one.name}'s pokemon stats:\n{pokemon_one}\n")
-  print()
   print(f"{trainer_two.name}'s pokemon stats:\n{pokemon_two}\n")
   input("Press enter to begin your battle!")
   clear_screen()
@@ -154,7 +153,10 @@ while True:
   # Battle loop (inside main game loop)
   while True:
     if pokemon_one.is_knocked_out or pokemon_two.is_knocked_out:
-      break  # End battle if a Pokémon is knocked out
+      choice = input("Press enter to start a new game...").lower()
+      if choice == '\n':
+        clear_screen()
+        break  # End battle if a Pokémon is knocked out
     if turn % 2 == 1:
       p_1_battle()
     else:
