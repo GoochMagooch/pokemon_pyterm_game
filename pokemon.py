@@ -27,9 +27,11 @@ class Pokemon:
         enemy.knockout()
         print(f"{enemy.name} has been knocked out!")
       else:
+        new_health = enemy.health - 25
         print(f"{self.name} attacks {enemy.name} with {self.attack_name}")
         print("It is super effective!")
-        print(f"{enemy.name}'s health is now: {enemy.health}")
+        print(f"{enemy.name}'s health is now: {new_health}")
+        enemy.health = new_health
     else:
       enemy.health -= 10
       print(f"{self.name} attacks {enemy.name} with {self.attack_name}")
@@ -97,14 +99,14 @@ while True:
 
   def battle():
     while True:
-      stats = input("Press 1 to display Trainer One stats...\nPress 2 to display Trainer Two stats...\n")
-      if stats == '1':
+      choice = input(f"{trainer_one.name}, press 1 to attack\npress 2 to use a potion")
+      if choice == '1':
         clear_screen()
-        print(f"Trainer name: {trainer_one}\nPokemon stats: \n{pokemon_one}\n")
-      elif stats == '2':
+        pokemon_one.attack(pokemon_two)
+      elif choice == '2':
         clear_screen()
         print(f"Trainer name: {trainer_two}\nPokemon stats: \n{pokemon_two}\n")
-      elif stats == 'exit':
+      elif choice == 'exit':
         print("Exiting stats menu...")
         clear_screen()
         break
