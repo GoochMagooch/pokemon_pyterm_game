@@ -1,5 +1,8 @@
 import os
 
+def clear_screen():
+  os.system('cls' if os.name == 'nt' else 'clear')
+
 class Pokemon:
   health = 100
 
@@ -58,23 +61,44 @@ class Trainer:
     return(f"{pokemon.name} has received a 50HP increase for a new HP level of {new_health}!")
 
 # Main menu
-def clear_screen():
-  os.system('cls' if os.name == 'nt' else 'clear')
-
 while True:
 
-  player1 = input("Player 1 enter your name: ")
-  print(f"Hello {player1}")
+  # Trainer One creation
+  player_one = input("Player 1 enter your trainer name: ")
+  trainer_one = Trainer(player_one)
+  print(f"Hello {trainer_one.name}")
+  input("Press enter to continue...")
+  clear_screen() # Clears screen after a choice is made
+  # Trainer Two creation
+  player_two = input("Player 2 enter your trainer name: ")
+  trainer_two = Trainer(player_two)
+  print(f"Hello {trainer_two.name}")
   input("Press enter to continue...")
   clear_screen() # Clears screen after a choice is made
   
-  player2 = input("Player 2 enter your name: ")
-  print(f"Hello {player2}")
+  # Trainer One pokemon creation
+  pokemon1 = input(f"{trainer_one.name} enter your pokemon: ")
+  attack1 = input("Enter your pokemon's attack: ")
+  type1 = input("Enter your pokemon's type: ")
+  pokemon_one = Pokemon(pokemon1, attack1, type1)
+  clear_screen()
+  print(f"{trainer_one.name}'s pokemon stats:\n{pokemon_one}\n")
   input("Press enter to continue...")
-  clear_screen() # Clears screen after a choice is made
+  clear_screen()
+  # Trainer Two pokemon creation
+  pokemon2 = input(f"{trainer_two.name} enter your pokemon: ")
+  attack2 = input("Enter your pokemon's attack: ")
+  type2 = input("Enter your pokemon's type: ")
+  print(f"{trainer_two.name}'s pokemon stats:\n{pokemon2}")
+  pokemon_two = Pokemon(pokemon2, attack2, type2)
+  clear_screen()
+  print(f"{trainer_two.name}'s pokemon stats:\n{pokemon_two}\n")
+  input("Press enter to continue...")
+  
+  clear_screen()
+  print("Congratulations, pokemon and trainer creation are now complete!")
   break
 
 bulbasaur = Pokemon("Bulbasaur", "water gun", "water")
 pikachu = Pokemon("Pikachu", "thunderbolt", "electric")
 chimchar = Pokemon("Chimchar", "ember", "fire")
-
