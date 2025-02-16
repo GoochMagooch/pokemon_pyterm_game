@@ -36,6 +36,9 @@ class Trainer:
   def __init__(self, name):
     self.name = name
 
+  def __repr__(self):
+    return(f"My name is {self.name}!")
+
   def revive(self, pokemon):
     if type(pokemon) == Pokemon:
       pokemon.health = 25
@@ -43,16 +46,20 @@ class Trainer:
     else:
       print("This pokemon is not part of your list!")
 
+  def potion(self, pokemon):  
+    if self.pokemon > 50:
+      diff = 100 - pokemon.health
+      pokemon.health = 100
+      return(f"{pokemon.name} has received a {diff}HP increase and is now at full health!")
+    new_health = pokemon.health + 50
+    pokemon.health += 50
+    return(f"{pokemon.name} has received a 50HP increase for a new HP level of {new_health}!")
+
+
+
+
+'''
 bulbasaur = Pokemon("Bulbasaur", "water gun", "water")
 pikachu = Pokemon("Pikachu", "thunderbolt", "electric")
 chimchar = Pokemon("Chimchar", "ember", "fire")
-print(chimchar)
-print()
-print(bulbasaur)
-print()
-pikachu.attack(bulbasaur)
-pikachu.attack(bulbasaur)
-pikachu.attack(bulbasaur)
-pikachu.attack(bulbasaur)
-ash = Trainer("Ash")
-ash.revive(bulbasaur)
+'''
