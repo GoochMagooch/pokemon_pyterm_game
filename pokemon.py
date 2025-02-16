@@ -84,7 +84,7 @@ while True:
   # Trainer One pokemon creation
   pokemon1 = input(f"{trainer_one.name} enter your pokemon: ")
   attack1 = input("Enter your pokemon's attack: ")
-  type1 = input("Enter your pokemon's type: ")
+  type1 = input("Enter your pokemon's type: ").lower()
   pokemon_one = Pokemon(pokemon1, attack1, type1)
   clear_screen()
   print(f"{trainer_one.name}'s pokemon stats:\n{pokemon_one}\n")
@@ -93,7 +93,7 @@ while True:
   # Trainer Two pokemon creation
   pokemon2 = input(f"{trainer_two.name} enter your pokemon: ")
   attack2 = input("Enter your pokemon's attack: ")
-  type2 = input("Enter your pokemon's type: ")
+  type2 = input("Enter your pokemon's type: ").lower()
   print(f"{trainer_two.name}'s pokemon stats:\n{pokemon2}")
   pokemon_two = Pokemon(pokemon2, attack2, type2)
   clear_screen()
