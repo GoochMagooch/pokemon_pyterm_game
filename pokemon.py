@@ -1,3 +1,5 @@
+import os
+
 class Pokemon:
   health = 100
 
@@ -55,11 +57,24 @@ class Trainer:
     pokemon.health += 50
     return(f"{pokemon.name} has received a 50HP increase for a new HP level of {new_health}!")
 
+# Main menu
+def clear_screen():
+  os.system('cls' if os.name == 'nt' else 'clear')
 
+while True:
 
+  player1 = input("Player 1 enter your name: ")
+  print(f"Hello {player1}")
+  input("Press enter to continue...")
+  clear_screen() # Clears screen after a choice is made
+  
+  player2 = input("Player 2 enter your name: ")
+  print(f"Hello {player2}")
+  input("Press enter to continue...")
+  clear_screen() # Clears screen after a choice is made
+  break
 
-'''
 bulbasaur = Pokemon("Bulbasaur", "water gun", "water")
 pikachu = Pokemon("Pikachu", "thunderbolt", "electric")
 chimchar = Pokemon("Chimchar", "ember", "fire")
-'''
+
