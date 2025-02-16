@@ -23,8 +23,7 @@ class Pokemon:
 
   def attack(self, enemy):
     if (self.pokemon_type == "water" and enemy.pokemon_type == "fire") or (self.pokemon_type == "fire" and enemy.pokemon_type == "plant") or (self.pokemon_type == "electric" and enemy.pokemon_type == "water"):
-      enemy.health -= 25
-      if enemy.health <= 0:
+      if enemy.health <= 25:
         enemy.knockout()
         print(f"{enemy.name} has been knocked out!")
       else:
@@ -60,7 +59,7 @@ class Trainer:
     pokemon.health += 50
     return(f"{pokemon.name} has received a 50HP increase for a new HP level of {new_health}!")
 
-# Main menu
+# Terminal Menu
 while True:
 
   # Trainer One creation
@@ -96,8 +95,25 @@ while True:
   input("Press enter to continue...")
   clear_screen()
 
-  print("Press enter to begin the battle...")
-  break
+  def battle():
+    while True:
+      stats = input("Press 1 to display Trainer One stats...\nPress 2 to display Trainer Two stats...\n")
+      if stats == '1':
+        clear_screen()
+        print(f"Trainer name: {trainer_one}\nPokemon stats: \n{pokemon_one}\n")
+      elif stats == '2':
+        clear_screen()
+        print(f"Trainer name: {trainer_two}\nPokemon stats: \n{pokemon_two}\n")
+      elif stats == 'exit':
+        print("Exiting stats menu...")
+        clear_screen()
+        break
+      else:
+        clear_screen()
+        print("Invalid choice...")
+      input("Press enter to continue")
+      clear_screen()
+  battle()
 
 bulbasaur = Pokemon("Bulbasaur", "water gun", "water")
 pikachu = Pokemon("Pikachu", "thunderbolt", "electric")
