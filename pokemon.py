@@ -117,7 +117,3 @@ while True:
       input("Press enter to continue")
       clear_screen()
   battle()
-
-bulbasaur = Pokemon("Bulbasaur", "water gun", "water")
-pikachu = Pokemon("Pikachu", "thunderbolt", "electric")
-chimchar = Pokemon("Chimchar", "ember", "fire")
