@@ -53,13 +53,14 @@ class Trainer:
       print("This pokemon is not part of your list!")
 
   def potion(self, pokemon):  
-    if self.pokemon > 50:
+    if pokemon.health > 50:
       diff = 100 - pokemon.health
       pokemon.health = 100
-      return(f"{pokemon.name} has received a {diff}HP increase and is now at full health!")
+      print(f"{pokemon.name} has received a {diff}HP increase and is now at full health!")
+      return
     new_health = pokemon.health + 50
     pokemon.health += 50
-    return(f"{pokemon.name} has received a 50HP increase for a new HP level of {new_health}!")
+    print(f"{pokemon.name} has received a 50HP increase for a new HP level of {new_health}!")
 
 # Terminal Menu
 while True:
@@ -105,7 +106,7 @@ while True:
         pokemon_one.attack(pokemon_two)
       elif choice == '2':
         clear_screen()
-        print(f"Trainer name: {trainer_two}\nPokemon stats: \n{pokemon_two}\n")
+        trainer_two.potion(pokemon_two)
       elif choice == 'exit':
         print("Exiting stats menu...")
         clear_screen()
