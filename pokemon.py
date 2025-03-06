@@ -43,6 +43,7 @@ class Pokemon:
 class Trainer:
   def __init__(self, name):
     self.name = name
+    self.stored_pokemon = []
 
   def __repr__(self):
     return(f"My name is {self.name}!")
@@ -66,8 +67,12 @@ class Trainer:
       pokemon.health += 50
       print(f"{pokemon.name} has received a 50HP increase for a new HP level of {new_health}!\n")
 
+  def add_pokemon(self, pokemon):
+      self.stored_pokemon.append(pokemon.name)
+
 # Terminal Menu
 while True:
+
   # Trainer One creation
   player_one = input("Player 1 enter your trainer name: ")
   trainer_one = Trainer(player_one)
@@ -85,15 +90,29 @@ while True:
   attack1 = input("Enter your pokemon's attack: ")
   type1 = input("Enter your pokemon's type: ").lower()
   pokemon_one = Pokemon(pokemon1, attack1, type1)
+  trainer_one.add_pokemon(pokemon_one)
   clear_screen()
-  # Trainer Two pokemon creation
-  pokemon2 = input(f"{trainer_two.name} enter your pokemon: ")
+  pokemon2 = input(f"{trainer_one.name} enter your second pokemon: ")
   attack2 = input("Enter your pokemon's attack: ")
   type2 = input("Enter your pokemon's type: ").lower()
   pokemon_two = Pokemon(pokemon2, attack2, type2)
+  trainer_one.add_pokemon(pokemon_two)
   clear_screen()
-  print(f"{trainer_one.name}'s pokemon stats:\n{pokemon_one}\n")
-  print(f"{trainer_two.name}'s pokemon stats:\n{pokemon_two}\n")
+  # Trainer Two pokemon creation
+  pokemon3 = input(f"{trainer_two.name} enter your pokemon: ")
+  attack3 = input("Enter your pokemon's attack: ")
+  type3 = input("Enter your pokemon's type: ").lower()
+  pokemon_three = Pokemon(pokemon3, attack3, type3)
+  trainer_two.add_pokemon(pokemon_three)
+  clear_screen()
+  pokemon4 = input(f"{trainer_two.name} enter your second pokemon: ")
+  attack4 = input("Enter your pokemon's attack: ")
+  type4 = input("Enter your pokemon's type: ").lower()
+  pokemon_four = Pokemon(pokemon4, attack4, type4)
+  trainer_two.add_pokemon(pokemon_four)
+  clear_screen()
+  print(f"{trainer_one.name} has chosen {trainer_one.stored_pokemon[0]} and {trainer_one.stored_pokemon[1]}!")
+  print(f"{trainer_two.name} has chosen {trainer_two.stored_pokemon[0]} and {trainer_two.stored_pokemon[1]}!")
   input("Press enter to begin your battle!")
   clear_screen()
 
@@ -104,7 +123,15 @@ while True:
     choice = input(f"press 1 to attack\npress 2 to use a potion\npress 3 to revive\npress 4 to show stats\npress 5 to skip your turn\nchoice: ")
     if choice == '1':
       clear_screen()
-      pokemon_one.attack(pokemon_two)
+      print(f"{trainer_one} has {trainer_one.stored_pokemon}")
+      pokemon = input('Choose your pokemon: ')
+      clear_screen()
+      print(f"{trainer_two} has {trainer_two.stored_pokemon}")
+      enemy = input('Who do you want to attack?: ')
+      if pokemon == '1':
+        pokemon_one.attack(enemy)
+      elif pokemon == '2':
+        pokemon_two.attack(enemy)
       return
     elif choice == '2':
       clear_screen()
@@ -153,10 +180,9 @@ while True:
   # Battle loop (inside main game loop)
   while True:
     if pokemon_one.is_knocked_out or pokemon_two.is_knocked_out:
-      choice = input("Press enter to start a new game...").lower()
-      if choice == '\n':
-        clear_screen()
-        break  # End battle if a Pokémon is knocked out
+      input('Press enter to begin new game!')
+      clear_screen()
+      break  # End battle if a Pokémon is knocked out
     if turn % 2 == 1:
       p_1_battle()
     else:
